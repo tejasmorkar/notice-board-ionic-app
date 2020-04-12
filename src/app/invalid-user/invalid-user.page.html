@@ -1,0 +1,57 @@
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="col-flex-center">
+        <ion-item lines="none">
+          <ion-icon name="information-circle-outline" color="danger"></ion-icon>
+          <ion-title>Invalid User</ion-title>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <ion-item lines="none">
+            <ion-text>
+              We are sorry to inform you that you were detected as an Invalid User.<br><br>
+            </ion-text>
+          </ion-item>
+          <ion-item lines="none">
+            This may be due to one of the following reasons: <br><br>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="send" slot="start"></ion-icon>
+            <ion-text class="ion-padding-top">
+              You are not a student of the Pimpri Chinchwad College of Engineering, Pune.<br>
+              This app is only for the students of this institute.
+            </ion-text>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="send" slot="start"></ion-icon>
+            <ion-text class="ion-padding-top">
+              You were not registered as a Notice Board App User.<br>
+              In this case contact your class teacher for registration.
+            </ion-text>
+          </ion-item>
+          <ion-item>
+            <ion-icon name="send" slot="start"></ion-icon>
+            <ion-text class="ion-padding-top">
+              You are using a different email address than that of the registered one.
+            </ion-text>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="loadedUserEmail">
+      <ion-col class="col-flex-center ion-padding-top" style="font-weight: bolder">
+        {{loadedUserEmail}}
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="col-flex-center">
+        <ion-button fill="clear" (click)="changeAccount()">USE A DIFFERENT ACCOUNT INSTEAD
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

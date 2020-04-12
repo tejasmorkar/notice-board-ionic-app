@@ -1,0 +1,22 @@
+.simple {
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.div-batch-coontainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.batches-class {
+    display: flex;
+    flex-direction: column;
+}

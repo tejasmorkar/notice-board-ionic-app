@@ -1,0 +1,428 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Add Notice</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <form [formGroup]="addNoticeForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label position="floating">Title</ion-label>
+      <ion-input type="text" formControlName="title" style="font-weight: bolder">
+      </ion-input>
+    </ion-item>
+    <div class=" validation-errors">
+      <ng-container *ngFor="let error of errorMessages?.title">
+        <ion-item class="error-message"
+          *ngIf="addNoticeForm.get('title')?.hasError(error.type) && (addNoticeForm.get('title')?.dirty || addNoticeForm.get('title')?.touched)"
+          style="padding: 0%; font-size: 0.75em" lines="none" no-padding>
+          <ion-icon name="information-circle-outline" color="danger"
+            style="padding: 0%; margin-inline-end: 5px; transform: scale(0.75)">
+          </ion-icon>
+          <ion-label>{{ error.message }}</ion-label>
+        </ion-item>
+      </ng-container>
+    </div>
+
+    <ion-item>
+      <ion-label position="floating">Notice Body</ion-label>
+      <ion-textarea formControlName="body" style="font-weight: bolder"></ion-textarea>
+    </ion-item>
+    <div class="validation-errors">
+      <ng-container *ngFor="let error of errorMessages?.body">
+        <ion-item class="error-message"
+          *ngIf="addNoticeForm.get('body')?.hasError(error.type) && (addNoticeForm.get('body')?.dirty || addNoticeForm.get('body')?.touched)"
+          style="padding: 0%; font-size: 0.75em" lines="none" no-padding>
+          <ion-icon name="information-circle-outline" color="danger"
+            style="padding: 0%; margin-inline-end: 5px; transform: scale(0.75)">
+          </ion-icon>
+          <ion-label>{{ error.message }}</ion-label>
+        </ion-item>
+      </ng-container>
+    </div>
+
+    <ion-item>
+      <ion-label position="floating">Link</ion-label>
+      <ion-textarea formControlName="link" style="font-weight: bolder" placeholder="Optional"></ion-textarea>
+    </ion-item>
+
+    <ion-grid>
+      <ion-item lines="none">
+        <ion-label>Batches</ion-label>
+      </ion-item>
+      <ion-row>
+        <ion-col style="font-weight: bolder">
+          <ion-label style="margin-right: 5px">Select all</ion-label>
+          <ion-checkbox name="all" #all (ionChange)="onAllChange($event, A, B, C, D, E, F, G, H, I, J, K, L, M)">
+          </ion-checkbox>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+
+    <ion-grid>
+
+      <ion-row>
+        <ion-col style="font-weight: bolder">
+          <ion-label style="margin-right: 5px">A</ion-label>
+          <ion-checkbox name="A" #A (ionChange)="onDivChange($event, A1, A2, A3, all)"></ion-checkbox>
+        </ion-col>
+        <ion-col>
+          <ion-label style="margin-right: 5px">A1</ion-label>
+          <ion-checkbox name="A1" #A1 (ionChange)="onSubDivChange($event, A, A2, A3)">
+          </ion-checkbox>
+        </ion-col>
+        <ion-col>
+          <ion-label style="margin-right: 5px">A2</ion-label>
+          <ion-checkbox name="A2" #A2 (ionChange)="onSubDivChange($event, A, A1, A3)">
+          </ion-checkbox>
+        </ion-col>
+        <ion-col>
+          <ion-label style="margin-right: 5px">A3</ion-label>
+          <ion-checkbox name="A3" #A3 (ionChange)="onSubDivChange($event, A, A1, A2)">
+          </ion-checkbox>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col style="font-weight: bolder">
+          <ion-label style="margin-right: 5px">B</ion-label>
+          <ion-checkbox name="B" #B (ionChange)="onDivChange($event, B1, B2, B3, all)"></ion-checkbox>
+        </ion-col>
+        <ion-col>
+          <ion-label style="margin-right: 5px">B1</ion-label>
+          <ion-checkbox name="B1" #B1 (ionChange)="onSubDivChange($event, B, B2, B3)">
+          </ion-checkbox>
+        </ion-col>
+        <ion-col>
+          <ion-label style="margin-right: 5px">B2</ion-label>
+          <ion-checkbox name="B2" #B2 (ionChange)="onSubDivChange($event, B, B1, B3)">
+          </ion-checkbox>
+        </ion-col>
+        <ion-col>
+          <ion-label style="margin-right: 5px">B3</ion-label>
+          <ion-checkbox name="B3" #B3 (ionChange)="onSubDivChange($event, B, B1, B2)">
+          </ion-checkbox>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col style="font-weight: bolder">
+          <ion-label style="margin-right: 5px">C</ion-label>
+          <ion-checkbox name="C" #C (ionChange)="onDivChange($event, C1, C2, C3, all)"></ion-checkbox>
+        </ion-col>
+        <ion-col>
+          <ion-label style="margin-right: 5px">C1</ion-label>
+          <ion-checkbox name="C1" #C1 (ionChange)="onSubDivChange($event, C, C2, C3)">
+          </ion-checkbox>
+        </ion-col>
+        <ion-col>
+          <ion-label style="margin-right: 5px">C2</ion-label>
+          <ion-checkbox name="C2" #C2 (ionChange)="onSubDivChange($event, C, C1, C3)">
+          </ion-checkbox>
+        </ion-col>
+        <ion-col>
+          <ion-label style="margin-right: 5px">C3</ion-label>
+          <ion-checkbox name="C3" #C3 (ionChange)="onSubDivChange($event, C, C1, C2)">
+          </ion-checkbox>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col style="font-weight: bolder">
+          <ion-label style="margin-right: 5px">D</ion-label>
+          <ion-checkbox name="D" #D (ionChange)="onDivChange($event, D1, D2, D3, all)"></ion-checkbox>
+        </ion-col>
+        <ion-col>
+          <ion-label style="margin-right: 5px">D1</ion-label>
+          <ion-checkbox name="D1" #D1 (ionChange)="onSubDivChange($event, D, D2, D3)">
+          </ion-checkbox>
+        </ion-col>
+        <ion-col>
+          <ion-label style="margin-right: 5px">D2</ion-label>
+          <ion-checkbox name="D2" #D2 (ionChange)="onSubDivChange($event, D, D1, D3)">
+          </ion-checkbox>
+        </ion-col>
+        <ion-col>
+          <ion-label style="margin-right: 5px">D3</ion-label>
+          <ion-checkbox name="D3" #D3 (ionChange)="onSubDivChange($event, D, D1, D2)">
+          </ion-checkbox>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col style="font-weight: bolder">
+          <ion-label style="margin-right: 5px">E</ion-label>
+          <ion-checkbox name="E" #E (ionChange)="onDivChange($event, E1, E2, E3, all)"></ion-checkbox>
+        </ion-col>
+        <ion-col>
+          <ion-label style="margin-right: 5px">E1</ion-label>
+          <ion-checkbox name="E1" #E1 (ionChange)="onSubDivChange($event, E, E2, E3)">
+          </ion-checkbox>
+        </ion-col>
+        <ion-col>
+          <ion-label style="margin-right: 5px">E2</ion-label>
+          <ion-checkbox name="E2" #E2 (ionChange)="onSubDivChange($event, E, E1, E3)">
+          </ion-checkbox>
+        </ion-col>
+        <ion-col>
+          <ion-label style="margin-right: 5px">E3</ion-label>
+          <ion-checkbox name="E3" #E3 (ionChange)="onSubDivChange($event, E, E1, E2)">
+          </ion-checkbox>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col style="font-weight: bolder">
+          <ion-label style="margin-right: 5px">F</ion-label>
+          <ion-checkbox name="F" #F (ionChange)="onDivChange($event, F1, F2, F3, all)"></ion-checkbox>
+        </ion-col>
+        <ion-col>
+          <ion-label style="margin-right: 5px">F1</ion-label>
+          <ion-checkbox name="F1" #F1 (ionChange)="onSubDivChange($event, F, F2, F3)">
+          </ion-checkbox>
+        </ion-col>
+        <ion-col>
+          <ion-label style="margin-right: 5px">F2</ion-label>
+          <ion-checkbox name="F2" #F2 (ionChange)="onSubDivChange($event, F, F1, F3)">
+          </ion-checkbox>
+        </ion-col>
+        <ion-col>
+          <ion-label style="margin-right: 5px">F3</ion-label>
+          <ion-checkbox name="F3" #F3 (ionChange)="onSubDivChange($event, F, F1, F2)">
+          </ion-checkbox>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col style="font-weight: bolder">
+          <ion-label style="margin-right: 5px">G</ion-label>
+          <ion-checkbox name="G" #G (ionChange)="onDivChange($event, G1, G2, G3, all)"></ion-checkbox>
+        </ion-col>
+        <ion-col>
+          <ion-label style="margin-right: 5px">G1</ion-label>
+          <ion-checkbox name="G1" #G1 (ionChange)="onSubDivChange($event, G, G2, G3)">
+          </ion-checkbox>
+        </ion-col>
+        <ion-col>
+          <ion-label style="margin-right: 5px">G2</ion-label>
+          <ion-checkbox name="G2" #G2 (ionChange)="onSubDivChange($event, G, G1, G3)">
+          </ion-checkbox>
+        </ion-col>
+        <ion-col>
+          <ion-label style="margin-right: 5px">G3</ion-label>
+          <ion-checkbox name="G3" #G3 (ionChange)="onSubDivChange($event, G, G1, G2)">
+          </ion-checkbox>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col style="font-weight: bolder">
+          <ion-label style="margin-right: 5px">H</ion-label>
+          <ion-checkbox name="H" #H (ionChange)="onDivChange($event, H1, H2, H3, all)"></ion-checkbox>
+        </ion-col>
+        <ion-col>
+          <ion-label style="margin-right: 5px">H1</ion-label>
+          <ion-checkbox name="H1" #H1 (ionChange)="onSubDivChange($event, H, H2, H3)">
+          </ion-checkbox>
+        </ion-col>
+        <ion-col>
+          <ion-label style="margin-right: 5px">H2</ion-label>
+          <ion-checkbox name="H2" #H2 (ionChange)="onSubDivChange($event, H, H1, H3)">
+          </ion-checkbox>
+        </ion-col>
+        <ion-col>
+          <ion-label style="margin-right: 5px">H3</ion-label>
+          <ion-checkbox name="H3" #H3 (ionChange)="onSubDivChange($event, H, H1, H2)">
+          </ion-checkbox>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col style="font-weight: bolder">
+          <ion-label style="margin-right: 5px">I</ion-label>
+          <ion-checkbox name="I" #I (ionChange)="onDivChange($event, I1, I2, I3, all)"></ion-checkbox>
+        </ion-col>
+        <ion-col>
+          <ion-label style="margin-right: 5px">I1</ion-label>
+          <ion-checkbox name="I1" #I1 (ionChange)="onSubDivChange($event, I, I2, I3)">
+          </ion-checkbox>
+        </ion-col>
+        <ion-col>
+          <ion-label style="margin-right: 5px">I2</ion-label>
+          <ion-checkbox name="I2" #I2 (ionChange)="onSubDivChange($event, I, I1, I3)">
+          </ion-checkbox>
+        </ion-col>
+        <ion-col>
+          <ion-label style="margin-right: 5px">I3</ion-label>
+          <ion-checkbox name="I3" #I3 (ionChange)="onSubDivChange($event, I, I1, I2)">
+          </ion-checkbox>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col style="font-weight: bolder">
+          <ion-label style="margin-right: 5px">J</ion-label>
+          <ion-checkbox name="J" #J (ionChange)="onDivChange($event, J1, J2, J3, all)"></ion-checkbox>
+        </ion-col>
+        <ion-col>
+          <ion-label style="margin-right: 5px">J1</ion-label>
+          <ion-checkbox name="J1" #J1 (ionChange)="onSubDivChange($event, J, J2, J3)">
+          </ion-checkbox>
+        </ion-col>
+        <ion-col>
+          <ion-label style="margin-right: 5px">J2</ion-label>
+          <ion-checkbox name="J2" #J2 (ionChange)="onSubDivChange($event, J, J1, J3)">
+          </ion-checkbox>
+        </ion-col>
+        <ion-col>
+          <ion-label style="margin-right: 5px">J3</ion-label>
+          <ion-checkbox name="J3" #J3 (ionChange)="onSubDivChange($event, J, J1, J2)">
+          </ion-checkbox>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col style="font-weight: bolder">
+          <ion-label style="margin-right: 5px">K</ion-label>
+          <ion-checkbox name="K" #K (ionChange)="onDivChange($event, K1, K2, K3, all)"></ion-checkbox>
+        </ion-col>
+        <ion-col>
+          <ion-label style="margin-right: 5px">K1</ion-label>
+          <ion-checkbox name="K1" #K1 (ionChange)="onSubDivChange($event, K, K2, K3)">
+          </ion-checkbox>
+        </ion-col>
+        <ion-col>
+          <ion-label style="margin-right: 5px">K2</ion-label>
+          <ion-checkbox name="K2" #K2 (ionChange)="onSubDivChange($event, K, K1, K3)">
+          </ion-checkbox>
+        </ion-col>
+        <ion-col>
+          <ion-label style="margin-right: 5px">K3</ion-label>
+          <ion-checkbox name="K3" #K3 (ionChange)="onSubDivChange($event, K, K1, K2)">
+          </ion-checkbox>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col style="font-weight: bolder">
+          <ion-label style="margin-right: 5px">L</ion-label>
+          <ion-checkbox name="L" #L (ionChange)="onDivChange($event, L1, L2, L3, all)"></ion-checkbox>
+        </ion-col>
+        <ion-col>
+          <ion-label style="margin-right: 5px">L1</ion-label>
+          <ion-checkbox name="L1" #L1 (ionChange)="onSubDivChange($event, L, L2, L3)">
+          </ion-checkbox>
+        </ion-col>
+        <ion-col>
+          <ion-label style="margin-right: 5px">L2</ion-label>
+          <ion-checkbox name="L2" #L2 (ionChange)="onSubDivChange($event, L, L1, L3)">
+          </ion-checkbox>
+        </ion-col>
+        <ion-col>
+          <ion-label style="margin-right: 5px">L3</ion-label>
+          <ion-checkbox name="L3" #L3 (ionChange)="onSubDivChange($event, L, L1, L2)">
+          </ion-checkbox>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col style="font-weight: bolder">
+          <ion-label style="margin-right: 5px">M</ion-label>
+          <ion-checkbox name="M" #M (ionChange)="onDivChange($event, M1, M2, M3, all)"></ion-checkbox>
+        </ion-col>
+        <ion-col>
+          <ion-label style="margin-right: 5px">M1</ion-label>
+          <ion-checkbox name="M1" #M1 (ionChange)="onSubDivChange($event, M, M2, M3)">
+          </ion-checkbox>
+        </ion-col>
+        <ion-col>
+          <ion-label style="margin-right: 5px">M2</ion-label>
+          <ion-checkbox name="M2" #M2 (ionChange)="onSubDivChange($event, M, M1, M3)">
+          </ion-checkbox>
+        </ion-col>
+        <ion-col>
+          <ion-label style="margin-right: 5px">M3</ion-label>
+          <ion-checkbox name="M3" #M3 (ionChange)="onSubDivChange($event, M, M1, M2)">
+          </ion-checkbox>
+        </ion-col>
+      </ion-row>
+
+    </ion-grid>
+    <div class="validation-errors">
+      <ng-container *ngFor="let error of errorMessages?.divBatches">
+        <ion-item class="error-message"
+          *ngIf="addNoticeForm.get('divBatches')?.hasError(error.type) && (addNoticeForm.get('divBatches')?.dirty || addNoticeForm.get('body')?.touched)"
+          style="padding: 0%; font-size: 0.75em" lines="none" no-padding>
+          <ion-icon name="information-circle-outline" color="danger"
+            style="padding: 0%; margin-inline-end: 5px; transform: scale(0.75)">
+          </ion-icon>
+          <ion-label>{{ error.message }}</ion-label>
+        </ion-item>
+      </ng-container>
+    </div>
+
+    <ion-item>
+      <ion-label>Category</ion-label>
+      <ion-select style="font-weight: bolder" formControlName="category" interface="action-sheet">
+        <ion-select-option value="Timetable">Timetable</ion-select-option>
+        <ion-select-option value="Announcement">Announcement</ion-select-option>
+        <ion-select-option value="Other">Other</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <div class="validation-errors">
+      <ng-container *ngFor="let error of errorMessages?.category">
+        <ion-item class="error-message"
+          *ngIf="addNoticeForm.get('category')?.hasError(error.type) && (addNoticeForm.get('category')?.dirty || addNoticeForm.get('category')?.touched)"
+          style="padding: 0%; font-size: 0.75em" lines="none" no-padding>
+          <ion-icon name="information-circle-outline" color="danger"
+            style="padding: 0%; margin-inline-end: 5px; transform: scale(0.75)">
+          </ion-icon>
+          <ion-label>{{ error.message }}</ion-label>
+        </ion-item>
+      </ng-container>
+    </div>
+
+
+    <ion-item>
+      <ion-label>Attachment Type</ion-label>
+      <ion-select placeholder="Select type" formControlName="fileType" (ionChange)="onFileTypeChange()">
+        <ion-select-option value="p">PDF</ion-select-option>
+        <ion-select-option value="i">Image</ion-select-option>
+        <ion-select-option value="t">No Attachments</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item *ngIf="fileType && fileType==='i'">
+      <ion-label>Take a photo</ion-label>
+      <ion-button (click)="takePhoto()">
+        Open Photo
+      </ion-button>
+    </ion-item>
+    <div *ngIf="fileType && fileType==='i'">
+      <ion-item *ngFor="let image of images ;let i = index">
+        <ion-img [src]="image" (click)="remove(i)"></ion-img>
+      </ion-item>
+    </div>
+    <ion-item *ngIf="fileType && fileType==='p'">
+      <input type="file" id="avatar" (change)="onFileChange($event)" #fileInput accept="application/pdf">
+    </ion-item>
+    <div *ngIf="fileType && fileType==='p'">
+      <ion-item *ngFor="let image of images ;let i = index">
+        <ion-img [src]="image" (click)="remove(i)"></ion-img>
+      </ion-item>
+    </div>
+
+    <br>
+
+    <div class="flex-container" padding>
+      <ion-button type="submit" [disabled]="!addNoticeForm.valid">Submit</ion-button>
+    </div>
+
+  </form>
+
+</ion-content>

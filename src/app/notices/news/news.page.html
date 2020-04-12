@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="mainMenu"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>News</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="notices">
+    <ion-card *ngFor="let notice of notices">
+      <ion-card-header>
+        <ion-card-subtitle>{{notice.ts | date}} <br> {{notice.author}}</ion-card-subtitle>
+        <ion-card-title>{{notice.title}}</ion-card-title>
+      </ion-card-header>  
+      <ion-img [src]="notice.urls[0] "></ion-img>
+      <ion-card-content>
+        {{notice.body}}
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
+  <ion-content *ngIf="!notices">
+    <ion-title margin>
+      No Notices in this domain
+    </ion-title>
+  </ion-content>

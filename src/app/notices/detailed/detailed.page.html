@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ selectedNotice?.title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-slides [options]="sliderOpts" *ngIf="selectedNotice?.type==='image'">
+      <ion-slide *ngFor="let img of selectedNotice?.urls">
+        <img [src]="img" tappable (click)="openPreview(img)" (loadstart)="_loading()" (load)="loaded()"
+          (loadeddata)="loaded()">
+      </ion-slide>
+    </ion-slides>
+    <ion-card-header>
+      <ion-card-subtitle>
+        <div class="main-container">
+          <div class="first-container custom-text">
+            FE {{ loadedUser?.div }}{{loadedUser?.batch}}
+          </div>
+          <div class="last-container custom-text">
+            {{ selectedNotice?.ts | date:"medium" }}
+          </div>
+        </div>
+      </ion-card-subtitle>
+      <ion-card-title>
+        <ion-label class="custom-text">{{ selectedNotice?.title }}</ion-label>
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content class="custom-text">
+      {{ selectedNotice?.body }}
+      <br>
+      <br>
+      <div class="update" *ngIf="selectedNotice?.link">
+        <ion-label color="primary" (click)="onLinkClick(selectedNotice?.link)">
+          {{ (selectedNotice.link.length>6)? (selectedNotice.link | slice:0:35)+'...':(selectedNotice.link) }}
+        </ion-label>
+      </div>
+      <br>
+      <br>
+      <ion-card-subtitle>
+        <ion-label class="custom-text">- {{ selectedNotice?.author }}</ion-label>
+      </ion-card-subtitle>
+      <div>
+        <ion-chip *ngFor="let batch of selectedNotice?.batches">
+          <ion-label>{{batch}}</ion-label>
+        </ion-chip>
+      </div>
+      <div class="update" *ngIf="selectedNotice?.update_ts">
+        Updated on <br> {{ selectedNotice?.update_ts | date:"medium" }}
+      </div>
+    </ion-card-content>
+  </ion-card>
+  <ion-card *ngIf="selectedNotice?.type==='pdf'">
+    <ion-item>
+      <ion-toggle [(ngModel)]="showPDFOptions"></ion-toggle> Show PDF options
+    </ion-item>
+    <ion-item lines="none" *ngIf="showPDFOptions" no-padding>
+      <ion-range min="0.5" max="2" color="secondary" [(ngModel)]="zoom">
+        <ion-label slot="start">0.1</ion-label>
+        <ion-label slot="end">2</ion-label>
+      </ion-range>
+    </ion-item>
+    <ion-item lines="none" *ngIf="showPDFOptions">
+      <ion-button slot="start" (click)="page=page-1" *ngIf="page>1">
+        <ion-icon name="arrow-dropleft"></ion-icon>
+      </ion-button>
+      <ion-label>{{page}}</ion-label>
+      <ion-button slot="end" (click)="page=page+1" *ngIf="page<max_pages">
+        <ion-icon name="arrow-dropright"></ion-icon>
+      </ion-button>
+    </ion-item>
+    <div padding>
+      <!-- <iframe [src]="selectedNotice?.urls | safe" frameborder="0" type="application/pdf" height="100%" width="100%" (load)="loaded()"></iframe> -->
+      <pdf-viewer [page]="page" class="frame" [src]="selectedNotice?.urls" [original-size]="true" [fit-to-page]="false"
+        [show-all]="false" [zoom]="zoom" padding (after-load-complete)="callBackFn($event)" (error)="onError($event)">
+      </pdf-viewer>
+    </div>
+  </ion-card>
+</ion-content>

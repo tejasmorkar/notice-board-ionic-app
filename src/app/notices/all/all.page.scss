@@ -1,0 +1,24 @@
+.container{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+.left{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    width: 100px;
+    margin: 10px;
+    ion-img{
+        height: 90%;
+
+    }
+}
+.icons{
+    display: inline;
+    width: 100%;
+    float: right;
+    
+}
+.chips{
+    transform: scale(0.5)
+}

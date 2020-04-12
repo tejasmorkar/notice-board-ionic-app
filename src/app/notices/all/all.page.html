@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="mainMenu"></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Induction</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="notices">
+  <ion-card *ngFor="let notice of notices" (click)="onNoticeClick(notice?.noticeId)">
+    <div class="container">
+      <div class="left">
+        <ion-img src="../assets/icon/image.png" *ngIf="notice?.type=='image'"></ion-img>
+        <ion-img src="../assets/icon/pdf.png" *ngIf="notice?.type=='pdf'"></ion-img>
+        <ion-img src="../assets/icon/text.png" *ngIf="notice?.type=='text'"></ion-img>
+      </div>
+      <div class="right">
+        <ion-card-header>
+          <ion-item lines="none" no-padding>
+            <ion-card-title>
+              {{notice?.title}}
+            </ion-card-title>
+            <ion-icon name="create" slot="end"
+              (click)="openEdit(notice?.noticeId,notice?.title);$event.stopPropagation()" *ngIf="isAdmin"></ion-icon>
+            <ion-icon name="trash" slot="end"
+              (click)="delete(notice?.title,notice?.noticeId,notice?.urls,notice?.type);$event.stopPropagation()"
+              *ngIf="isAdmin">
+            </ion-icon>
+          </ion-item>
+
+          <ion-card-subtitle>
+            {{notice?.ts | date}} <br>
+            <b *ngIf="notice?.update_ts">Edited</b>
+          </ion-card-subtitle>
+
+        </ion-card-header>
+        <ion-card-content>
+          {{ (notice?.body.length>120)? (notice?.body | slice:0:120)+'...':(notice?.body)}}
+          <ion-label color="primary" class="read-more" *ngIf="notice?.body.length>120">Read More</ion-label>
+          <ion-item no-padding lines="none">
+            <ion-label>- {{ notice?.author }}</ion-label>
+          </ion-item>
+          <!-- <div *ngIf="isAdmin">
+            <ion-chip *ngFor="let batch of notice?.batches">
+              <ion-label>{{batch}}</ion-label>
+            </ion-chip>
+          </div> -->
+        </ion-card-content>
+      </div>
+    </div>
+    <!-- <ion-card-header>
+      <ion-card-subtitle>{{notice?.ts | date}} <br> {{notice?.author}}</ion-card-subtitle>
+      <ion-card-title>{{notice?.title}}</ion-card-title>
+      <ion-icon name="image" slot="end"></ion-icon>
+    </ion-card-header>  
+    <ion-img  *ngIf="notice?.type=='image'" [src]="notice?.urls[0]" class="ion-padding-bottom" height="300px"></ion-img>
+    <ion-card-content>
+      {{ (notice?.body.length>120)? (notice?.body | slice:0:120)+'...':(notice?.body)}}
+      <ion-label color="primary" class="read-more" *ngIf="notice?.body.length>120">Read More</ion-label>
+    </ion-card-content> -->
+  </ion-card>
+</ion-content>
+<ion-content *ngIf="!notices">
+  <ion-title margin>
+    No Notices in this domain
+  </ion-title>
+</ion-content>

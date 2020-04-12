@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Validate Admin</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="validateUserForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="text" style="font-weight: bolder" [value]="loadedUserEmail" disabled></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Erp Id</ion-label>
+      <ion-input type="text" formControlName="erpId" style="font-weight: bolder; text-transform: uppercase"></ion-input>
+    </ion-item>
+    <div class="validation-errors">
+      <ng-container *ngFor="let error of errorMessages?.erpId">
+        <ion-item class="error-message" *ngIf="
+              validateUserForm.get('erpId').hasError(error.type) &&
+              (validateUserForm.get('erpId').dirty ||
+                validateUserForm.get('erpId').touched)
+            " style="padding: 0%; font-size: 0.75em" lines="none" no-padding>
+          <ion-icon name="information-circle-outline" color="danger"
+            style="padding: 0%; margin-inline-end: 5px; transform: scale(0.75)">
+          </ion-icon>
+          <ion-label>{{ error.message }}</ion-label>
+        </ion-item>
+      </ng-container>
+    </div>
+
+    <ion-item>
+      <ion-label position="floating">Phone Number</ion-label>
+      <ion-input type="text" formControlName="phoneNumber" style="font-weight: bolder; text-transform: uppercase">
+      </ion-input>
+    </ion-item>
+    <div class="validation-errors">
+      <ng-container *ngFor="let error of errorMessages?.phoneNumber">
+        <ion-item class="error-message" *ngIf="
+              validateUserForm.get('phoneNumber').hasError(error.type) &&
+              (validateUserForm.get('phoneNumber').dirty ||
+                validateUserForm.get('phoneNumber').touched)
+            " style="padding: 0%; font-size: 0.75em" lines="none" no-padding>
+          <ion-icon name="information-circle-outline" color="danger"
+            style="padding: 0%; margin-inline-end: 5px; transform: scale(0.75)">
+          </ion-icon>
+          <ion-label>{{ error.message }}</ion-label>
+        </ion-item>
+      </ng-container>
+    </div>
+
+    <br />
+
+    <div class="flex-container" padding>
+      <ion-button type="submit" [disabled]="!validateUserForm.valid">Submit</ion-button>
+    </div>
+
+    <div class="flex-container">
+      <ion-button fill="clear" (click)="changeAccount()">USE A DIFFERENT ACCOUNT INSTEAD</ion-button>
+    </div>
+  </form>
+</ion-content>

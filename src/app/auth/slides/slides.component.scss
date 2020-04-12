@@ -1,0 +1,22 @@
+.col-flex-end {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.col-flex-space {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.col-flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.col-item-up {
+    align-self: flex-start;
+    margin-top: 10ch;
+}

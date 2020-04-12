@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Knowtify</string>
+    <string name="title_activity_main">Knowtify</string>
+    <string name="package_name">com.devscollab.knowtify</string>
+    <string name="fileprovider_authority">com.devscollab.knowtify.fileprovider</string>
+    <string name="custom_url_scheme">com.devscollab.knowtify</string>
+</resources>

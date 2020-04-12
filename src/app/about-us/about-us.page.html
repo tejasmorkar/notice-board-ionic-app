@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>about-us</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col class="col-flex">
+        <ion-item lines="none">
+          <ion-avatar>
+            <ion-img src="../../assets/icon/favicon.png"></ion-img>
+          </ion-avatar>
+          <ion-title>Notice Board App</ion-title>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item lines="none">
+          <ion-text style="text-align: justify">
+            Notice Board App has been developed for the Department of Engineering, Pimpri Chinchwad College of
+            Engineering, Pune. <br><br>
+            This app provides an individual platform for the institute to share the official notices
+            with its students. <br><br>
+            Notices will be well classified into categories like Academic, Scholarship, Assignments and
+            others. So, maintaining them and referring them in the future will become
+            easier.
+          </ion-text>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col style="margin-top: 1.5em">
+        <ion-list>
+          <ion-item lines="none">
+            <ion-label>Developed By -</ion-label>
+          </ion-item>
+          <ion-item (click)="onClickSuyash()">
+            <ion-label style="font-weight: bolder">Suyash Sonawane</ion-label>
+            <ion-icon slot="end" name="logo-github"></ion-icon>
+          </ion-item>
+          <ion-item (click)="onClickTejas()">
+            <ion-label style="font-weight: bolder">Tejas Morkar</ion-label>
+            <ion-icon slot="end" name="logo-github"></ion-icon>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

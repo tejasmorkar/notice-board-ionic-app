@@ -1,0 +1,93 @@
+<ion-app>
+  <ion-menu side="start" menuId="mainMenu" (ionWillOpen)="openMenu()">
+    <ion-header>
+      <ion-toolbar>
+        <ion-item lines="none">
+          <ion-avatar slot="start">
+            <ion-img src="../assets/icon/small-icon.png"></ion-img>
+          </ion-avatar>
+          <ion-title>
+            Knowtify
+          </ion-title>
+        </ion-item>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+      <ion-list>
+        <ion-menu-toggle menu="mainMenu">
+          <ion-item-group>
+            <ion-avatar class="ion-margin-start ion-margin-top" slot="icon-only" [routerLink]="['/settings']">
+              <ion-img [src]="userPhotoUrl"></ion-img>
+            </ion-avatar>
+            <ion-item lines="none">
+              <ion-label>
+                {{ loadedUser?.displayName }}
+              </ion-label>
+            </ion-item>
+          </ion-item-group>
+        </ion-menu-toggle>
+
+        <ion-item-group>
+          <ion-item-divider>
+            <ion-label>Notices</ion-label>
+          </ion-item-divider>
+          <ion-menu-toggle menu="mainMenu" *ngIf="isLoadedUserAdmin">
+            <ion-item lines="none" routerLink="/mynotices">
+              <ion-icon name="add-circle" slot="start"></ion-icon>
+              <ion-label>Add Notice</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle menu="mainMenu" *ngIf="isLoadedUserAdmin">
+            <ion-item lines="none" routerLink="/instantPush">
+              <ion-icon name="flash" slot="start"></ion-icon>
+              <ion-label>Instant Push</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <!-- <ion-menu-toggle menu="mainMenu"> -->
+          <ion-item lines="none" (click)="disabledPressed()" class="custom-disabled-class">
+            <ion-icon name="star" slot="start"></ion-icon>
+            <ion-label>Starred</ion-label>
+          </ion-item>
+          <!-- </ion-menu-toggle> -->
+          <!-- <ion-menu-toggle menu="mainMenu"> -->
+          <ion-item lines="none" (click)="disabledPressed()" class="custom-disabled-class">
+            <ion-icon name="checkmark-circle-outline" slot="start"></ion-icon>
+            <ion-label>Unseen</ion-label>
+          </ion-item>
+          <!-- </ion-menu-toggle> -->
+        </ion-item-group>
+
+        <ion-item-group>
+          <ion-item-divider>
+            <ion-label>Other</ion-label>
+          </ion-item-divider>
+          <ion-menu-toggle menu="mainMenu">
+            <ion-item lines="none" routerLink="/about-us">
+              <ion-icon name="information-circle" slot="start"></ion-icon>
+              <ion-label>About Us</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle menu="mainMenu">
+            <ion-item lines="none" routerLink="/settings">
+              <ion-icon name="settings" slot="start"></ion-icon>
+              <ion-label>Settings</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle menu="mainMenu" *ngIf="isFeedbackEnabled">
+            <ion-item lines="none" routerLink="/feedback">
+              <ion-icon name="stats" slot="start"></ion-icon>
+              <ion-label>Feedback</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-item lines="none" (click)="onSignout()">
+            <ion-icon name="log-out" slot="start"></ion-icon>
+            <ion-label>Signout</ion-label>
+          </ion-item>
+        </ion-item-group>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <ion-router-outlet main></ion-router-outlet>
+</ion-app>

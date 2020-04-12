@@ -1,0 +1,103 @@
+  <ion-slides #slides [options]="slideOpts">
+    <ion-slide style="width: 25vw">
+      <ion-grid width="fluid">
+        <ion-row>
+          <ion-col class="col-flex-center" style="height: 90vh">
+            <ion-img src="../../assets/icon/screenShot1.png" style="height: 75vh"></ion-img>
+            <ion-text style="font-weight: bolder" class="ion-padding-end">Sign Up using the registered email address
+            </ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="col-flex-space" style="height: 10vh">
+            <ion-button fill="clear" hidden (click)="onPrev()">
+              <!-- <ion-icon name="arrow-round-back" slot="start"></ion-icon> -->
+              <ion-label>Prev</ion-label>
+            </ion-button>
+            <ion-button fill="clear" (click)="onNext()">
+              <ion-label>Next</ion-label>
+              <!-- <ion-icon name="arrow-round-forward" slot="end"></ion-icon> -->
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-slide>
+
+    <ion-slide style="width: 25vw">
+      <ion-grid width="fluid">
+        <ion-row>
+          <ion-col class="col-flex-center" style="height: 90vh">
+            <ion-img src="../../assets/icon/screenShot2.png" style="height: 75vh"></ion-img>
+            <ion-text style="font-weight: bolder" class="ion-padding-horizontal">
+              Fill up the FE
+              Roll No correctly
+              <br><br><br>
+              Erp Id is the one sent via SMS while admissions
+              <br><br><br>
+              Enter your mobile number
+            </ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="col-flex-space" style="height: 10vh">
+            <ion-button fill="clear" (click)="onPrev()">
+              <!-- <ion-icon name="arrow-round-back" slot="start"></ion-icon> -->
+              <ion-label>Prev</ion-label>
+            </ion-button>
+            <ion-button fill="clear" (click)="onNext()">
+              <ion-label>Next</ion-label>
+              <!-- <ion-icon name="arrow-round-forward" slot="end"></ion-icon> -->
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-slide>
+
+    <ion-slide style="width: 25vw">
+      <ion-grid width="fluid">
+        <ion-row>
+          <ion-col class="col-flex-center" style="height: 90vh">
+            <ion-img src="../../assets/icon/screenShot3.png" style="height: 75vh"></ion-img>
+            <ion-text style="font-weight: bolder" class="ion-padding-end">
+              That's It! <br><br>
+              Get all the notices at your finger tips, right away
+            </ion-text>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="col-flex-space" style="height: 10vh">
+            <ion-button fill="clear" (click)="onPrev()">
+              <!-- <ion-icon name="arrow-round-back" slot="start"></ion-icon> -->
+              <ion-label>Prev</ion-label>
+            </ion-button>
+            <ion-button fill="clear" (click)="onNext()">
+              <ion-label>Next</ion-label>
+              <!-- <ion-icon name="arrow-round-forward" slot="end"></ion-icon> -->
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-slide>
+
+    <ion-slide style="width: 25vw">
+      <ion-grid width="fluid">
+        <ion-row>
+          <ion-col class="col-flex-center" style="height: 90vh">
+            <ion-img src="../../assets/icon/letsGo.png" style="height: 25vh" (click)="onFinish()"></ion-img>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="col-flex-space" style="height: 10vh">
+            <ion-button fill="clear" (click)="onPrev()">
+              <!-- <ion-icon name="arrow-round-back" slot="start"></ion-icon> -->
+              <ion-label>Prev</ion-label>
+            </ion-button>
+            <ion-button fill="clear" (click)="onFinish()">
+              <!-- <ion-icon name="arrow-round-back" slot="start"></ion-icon> -->
+              <ion-label>Finish</ion-label>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-slide>
+  </ion-slides>

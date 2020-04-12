@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Edit Notice</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form [formGroup]="editNoticeForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label position="floating">Title</ion-label>
+      <ion-input type="text" formControlName="title" style="font-weight: bolder"></ion-input>
+    </ion-item>
+    <div class="validation-errors">
+      <ng-container *ngFor="let error of errorMessages?.title">
+        <ion-item class="error-message"
+          *ngIf="editNoticeForm.get('title')?.hasError(error.type) && (editNoticeForm.get('title')?.dirty || editNoticeForm.get('title')?.touched)"
+          style="padding: 0%; font-size: 0.75em" lines="none" no-padding>
+          <ion-icon name="information-circle-outline" color="danger"
+            style="padding: 0%; margin-inline-end: 5px; transform: scale(0.75)">
+          </ion-icon>
+          <ion-label>{{ error.message }}</ion-label>
+        </ion-item>
+      </ng-container>
+    </div>
+
+    <ion-item>
+      <ion-label position="floating">Notice Body</ion-label>
+      <ion-textarea formControlName="body" style="font-weight: bolder"></ion-textarea>
+    </ion-item>
+    <div class="validation-errors">
+      <ng-container *ngFor="let error of errorMessages?.body">
+        <ion-item class="error-message"
+          *ngIf="editNoticeForm.get('body')?.hasError(error.type) && (editNoticeForm.get('body')?.dirty || editNoticeForm.get('body')?.touched)"
+          style="padding: 0%; font-size: 0.75em" lines="none" no-padding>
+          <ion-icon name="information-circle-outline" color="danger"
+            style="padding: 0%; margin-inline-end: 5px; transform: scale(0.75)">
+          </ion-icon>
+          <ion-label>{{ error.message }}</ion-label>
+        </ion-item>
+      </ng-container>
+    </div>
+
+    <ion-item>
+      <ion-label>Category</ion-label>
+      <ion-select style="font-weight: bolder" formControlName="category" interface="action-sheet">
+        <ion-select-option value="Timetable">Timetable</ion-select-option>
+        <ion-select-option value="Announcement">Announcement</ion-select-option>
+        <ion-select-option value="Other">Other</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <div class="validation-errors">
+      <ng-container *ngFor="let error of errorMessages?.category">
+        <ion-item class="error-message"
+          *ngIf="editNoticeForm.get('category')?.hasError(error.type) && (editNoticeForm.get('category')?.dirty || editNoticeForm.get('category')?.touched)"
+          style="padding: 0%; font-size: 0.75em" lines="none" no-padding>
+          <ion-icon name="information-circle-outline" color="danger"
+            style="padding: 0%; margin-inline-end: 5px; transform: scale(0.75)">
+          </ion-icon>
+          <ion-label>{{ error.message }}</ion-label>
+        </ion-item>
+      </ng-container>
+    </div>
+
+    <br>
+
+    <div class="flex-container" padding>
+      <ion-button type="submit" [disabled]="!editNoticeForm.valid">Submit</ion-button>
+    </div>
+
+  </form>
+
+</ion-content>

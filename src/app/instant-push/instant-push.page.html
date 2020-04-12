@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Send a Instant Notification</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-item lines="none">
+          <ion-label position="floating">Title</ion-label>
+          <ion-input type="text" [(ngModel)]="title"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item lines="none">
+          <ion-label position="floating">Body</ion-label>
+          <ion-input type="text" [(ngModel)]="body"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="col-flex-center">
+        <ion-button (click)="submit()">Send <ion-icon name="flash" slot="end"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="col-flex-center">
+        <p color="danger" *ngIf="error">Enter correct details</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+
+
+</ion-content>

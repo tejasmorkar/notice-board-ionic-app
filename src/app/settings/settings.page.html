@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label>Change Display Photo</ion-label>
+    <ion-select name="urls" [value]="selectUrl" [(ngModel)]="selectUrl" (ionChange)="urlSelected()">
+      <ion-select-option value="0">Default</ion-select-option>
+      <ion-select-option value="1">Male</ion-select-option>
+      <ion-select-option value="2">Female</ion-select-option>
+    </ion-select>
+  </ion-item>
+</ion-content>

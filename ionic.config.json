@@ -1,0 +1,7 @@
+{
+  "name": "notice-board-ionic-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
